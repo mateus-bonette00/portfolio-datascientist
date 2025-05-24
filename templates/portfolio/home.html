@@ -1,0 +1,417 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Data Scientist</title>
+    <link href="https://cdnjs.cloudflare.com/.../font-awesome.min.css" rel="stylesheet">
+     <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    rel="stylesheet"
+  >
+    <link href="https://fonts.googleapis.com/..." rel="stylesheet">
+    <!-- agora o static funciona -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="smooth-scroll">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Mateus Bonette</div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#about" class="nav-link">Sobre Mim</a></li>
+                    <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                    <li><a href="#projects" class="nav-link">Projetos</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Olá, eu sou <br> Mateus Bonette</h1>
+                    <p class="subtitle">Transformando dados em insights valiosos</p>
+                    <p>Especialista em análise de dados, machine learning e visualização de dados. Apaixonado por descobrir padrões e contar histórias através dos dados.</p>
+                    <a href="#about" class="cta-button">Conheça meu trabalho</a>
+                </div>
+                <div class="hero-image">
+                    <img src="/static/images/foto-de-perfil.JPG" alt="Foto de Perfil" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Sou um Data Scientist apaixonado por transformar dados brutos em insights estratégicos que impulsionam decisões de negócio. Com mais de 5 anos de experiência na área, desenvolvi expertise em Python, R, Machine Learning e visualização de dados.</p>
+                    
+                    <p>Minha jornada começou na graduação em Estatística, onde descobri minha paixão por encontrar padrões escondidos nos dados. Desde então, trabalhei em diversos projetos desafiadores, desde análises exploratórias até implementação de modelos de machine learning em produção.</p>
+                    
+                    <p>Acredito que os dados têm o poder de contar histórias fascinantes e resolver problemas complexos. Meu objetivo é sempre entregar soluções práticas e de alto valor, combinando rigor técnico com comunicação clara dos resultados.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/static/images/about.jpg" alt="Sobre mim" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Minhas Habilidades</h2>
+            <p class="section-subtitle">Tecnologias e ferramentas que domino para extrair o máximo valor dos dados</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent-color);">Linguagens de Programação</h3>
+                    {% for skill in skills %}
+                        {% if skill.name in "Python,R,SQL" %}
+                        <div class="skill-item">
+                            <i class="{{ skill.icon }} skill-icon"></i>
+                            <div class="skill-info">
+                                <div class="skill-name">{{ skill.name }}</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: {{ skill.level }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent-color);">Bibliotecas & Frameworks</h3>
+                    {% for skill in skills %}
+                        {% if skill.name in "Pandas,NumPy,Scikit-learn,TensorFlow" %}
+                        <div class="skill-item">
+                            <i class="{{ skill.icon }} skill-icon"></i>
+                            <div class="skill-info">
+                                <div class="skill-name">{{ skill.name }}</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: {{ skill.level }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent-color);">Visualização & BI</h3>
+                    {% for skill in skills %}
+                        {% if skill.name in "Matplotlib,Seaborn,Power BI,Tableau" %}
+                        <div class="skill-item">
+                            <i class="{{ skill.icon }} skill-icon"></i>
+                            <div class="skill-info">
+                                <div class="skill-name">{{ skill.name }}</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: {{ skill.level }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--accent-color);">Ferramentas</h3>
+                    {% for skill in skills %}
+                        {% if skill.name == "Git" %}
+                        <div class="skill-item">
+                            <i class="{{ skill.icon }} skill-icon"></i>
+                            <div class="skill-info">
+                                <div class="skill-name">{{ skill.name }}</div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: {{ skill.level }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="skill-item">
+                        <i class="fab fa-docker skill-icon"></i>
+                        <div class="skill-info">
+                            <div class="skill-name">Docker</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-aws skill-icon"></i>
+                        <div class="skill-info">
+                            <div class="skill-name">AWS</div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Meus Projetos</h2>
+            <p class="section-subtitle">Explore alguns dos projetos que desenvolvi para resolver desafios reais com dados</p>
+            
+            <div class="projects-grid">
+                {% for project in projects %}
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-description">{{ project.short_description }}</p>
+                        <button class="project-button" onclick="openModal({{ project.id }})">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Vamos conversar sobre como posso ajudar seu projeto ou empresa com análise de dados</p>
+            
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                </form>
+
+                <div class="contact-info">
+                    <a href="mailto:seu-email@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>seu-email@gmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/5511999999999" target="_blank" class="contact-item">
+                        <i class="fab fa-whatsapp contact-icon"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>(11) 99999-9999</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin contact-icon"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p>/in/seu-perfil</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/seu-usuario" target="_blank" class="contact-item">
+                        <i class="fab fa-github contact-icon"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p>/seu-usuario</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mateus Bonette Portfolio. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="modal-tech" id="modalTech"></div>
+            <a href="#" class="modal-link" id="modalLink" target="_blank">Ver no GitHub</a>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Skills animation on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('projectModal');
+        const span = document.getElementsByClassName('close')[0];
+
+        function openModal(projectId) {
+            fetch(`/project/${projectId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('modalTitle').textContent = data.title;
+                    document.getElementById('modalDescription').textContent = data.full_description;
+                    document.getElementById('modalLink').href = data.github_link;
+                    
+                    const techContainer = document.getElementById('modalTech');
+                    techContainer.innerHTML = '';
+                    data.technologies.forEach(tech => {
+                        const tag = document.createElement('span');
+                        tag.className = 'tech-tag';
+                        tag.textContent = tech;
+                        techContainer.appendChild(tag);
+                    });
+                    
+                    modal.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar detalhes do projeto:', error);
+                });
+        }
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch('/send-contact/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Mensagem enviada com sucesso!');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Erro ao enviar mensagem. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente.');
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
